@@ -1,0 +1,17 @@
+{
+  "name": "odg-game-ping-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "check": "node ./index.js"
+  },
+  "keywords": [],
+  "author": "Luka Skukan <lskukan1@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.3.1",
+    "puppeteer": "^21.5.2"
+  }
+}
