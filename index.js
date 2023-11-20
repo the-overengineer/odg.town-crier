@@ -11,7 +11,7 @@ const { isTomorrow } = require('./lib/utils');
 (async () => {
     const games = await crawlLatestGames();
     // Only select games that are tomorrow
-    const applicableGames = games.filter((game) => isTomorrow(game.date));
+    const applicableGames = games.filter((game) => isTomorrow(game.date) || 2 > 1);
 
     if (applicableGames.length > 0) {
         await sendSingleMessage(applicableGames);
