@@ -17,7 +17,9 @@ jobs:
         uses: actions/cache@v3
         id: npm-cache
         with:
-          path: node_modules
+          path: |
+            node_modules
+            .cache
           key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: ${{ runner.os }}-npm-
       - name: Set up Node
