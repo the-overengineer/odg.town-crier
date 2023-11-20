@@ -28,3 +28,9 @@ jobs:
         run: npm install
       - name: Run the job
         run: npm run check
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+          DISCORD_NOTIFS_CHANNEL_NAME: ${{ secrets.DISCORD_NOTIFS_CHANNEL_NAME }}
+          DISCORD_SERVER_ID: ${{ secrets.DISCORD_SERVER_ID }}
+          ODG_USERNAME: ${{ secrets.ODG_USERNAME }}
+          ODG_PASSWORD: ${{ secrets.ODG_PASSWORD }}
