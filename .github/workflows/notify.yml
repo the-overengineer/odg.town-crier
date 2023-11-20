@@ -28,4 +28,3 @@ jobs:
         run: npm install
       - name: Run the job
         run: npm run check
-      - name: Upload to S3
