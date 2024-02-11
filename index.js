@@ -5,17 +5,24 @@ require('dotenv').config({
 });
 
 const { crawlLatestGames } = require('./lib/game-crawler');
-const { sendSingleMessage } = require('./lib/discord-bot');
-const { isTomorrow } = require('./lib/utils');
+const { sendGamesTomorrowMessage, sendEmptyGamesInTwoDaysMessage } = require('./lib/discord-bot');
+const { isTomorrow, isInDays } = require('./lib/utils');
 
 (async () => {
     const games = await crawlLatestGames();
     // Only select games that are tomorrow
-    const applicableGames = games.filter((game) => isTomorrow(game.date));
+    const gamesHappeningTomorrow = games.filter((game) => isTomorrow(game.date));
+    const gamesWithEmptySpotsInTwoDays = games.filter((game) => isInDays(game.date, 2) && game.players.length < game.spots);
 
-    if (applicableGames.length > 0) {
-        await sendSingleMessage(applicableGames);
+    if (gamesHappeningTomorrow.length > 0) {
+        await sendGamesTomorrowMessage(gamesHappeningTomorrow);
     } else {
-        console.log('No games tomorrow, wrapping up');
+        console.log('No games tomorrow');
+    }
+
+    if (gamesWithEmptySpotsInTwoDays.length > 0) {
+        await sendEmptyGamesInTwoDaysMessage(gamesWithEmptySpotsInTwoDays);
+    } else {
+        console.log('No empty games in two days');
     }
 })();

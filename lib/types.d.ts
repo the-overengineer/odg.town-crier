@@ -9,6 +9,7 @@ export declare type Game = {
     url: string;
     odg: string;
     date: Date;
-    gmName: string;
+    gm: Player;
     players: Player[];
+    spots: number;
 };
