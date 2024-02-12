@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "check": "node ./index.js"
+    "check": "node ./index.js",
+    "announce": "node ./upcoming-games.js"
   },
   "keywords": [],
   "author": "Luka Skukan <lskukan1@gmail.com>",

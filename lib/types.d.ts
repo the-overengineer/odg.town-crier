@@ -8,6 +8,7 @@ export declare type Game = {
     name: string;
     url: string;
     odg: string;
+    odgLink: string;
     date: Date;
     gm: Player;
     players: Player[];
