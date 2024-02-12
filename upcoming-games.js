@@ -10,7 +10,7 @@ const { isInDays } = require('./lib/utils');
 
 (async () => {
     const games = await crawlLatestGames();
-    const gamesNextWeek = games.filter((game) => isInDays(game.date, 12));
+    const gamesNextWeek = games.filter((game) => isInDays(game.date, 8));
 
     if (gamesNextWeek.length > 0) {
         const odgName = gamesNextWeek[0].odg;
