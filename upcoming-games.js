@@ -6,11 +6,14 @@ require('dotenv').config({
 
 const { crawlLatestGames } = require('./lib/game-crawler');
 const { sendApplicationsOpenTonightMessage } = require('./lib/discord-bot');
-const { isInDays } = require('./lib/utils');
+const { isInDays, isFriday } = require('./lib/utils');
 
 (async () => {
     const games = await crawlLatestGames();
-    const gamesNextWeek = games.filter((game) => isInDays(game.date, 8));
+    const gamesNextWeek = games.filter((game) => {
+        return isFriday(game.date) &&
+            (isInDays(game.date, 8) || isInDays(game.date, 10));
+    });
 
     if (gamesNextWeek.length > 0) {
         const odgName = gamesNextWeek[0].odg;
