@@ -7,11 +7,19 @@ require('dotenv').config({
 const { crawlLatestGames } = require('./lib/game-crawler');
 const { sendApplicationsOpenTonightMessage } = require('./lib/discord-bot');
 const { isInDays, isFriday } = require('./lib/utils');
+const { isMonday } = require('date-fns');
 
 (async () => {
     const games = await crawlLatestGames();
     const gamesNextWeek = games.filter((game) => {
-        return isFriday(game.date) &&
+        const today = new Date();
+
+        // Temporary hack for new season
+        if (isMonday(today) && game.odg === 'ODG122') {
+            return isInDays(game.date, 5);
+        }
+
+        return isFriday(today) &&
             (isInDays(game.date, 8) || isInDays(game.date, 10));
     });
 
