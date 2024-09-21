@@ -19,6 +19,10 @@ const { isMonday } = require('date-fns');
             return isInDays(game.date, 5);
         }
 
+        if (game.odg === 'ODG122') {
+            return false;
+        }
+
         return isFriday(today) &&
             (isInDays(game.date, 8) || isInDays(game.date, 10));
     });
