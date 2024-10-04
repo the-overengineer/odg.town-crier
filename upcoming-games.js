@@ -6,8 +6,8 @@ require('dotenv').config({
 
 const { crawlLatestGames } = require('./lib/game-crawler');
 const { sendApplicationsOpenTonightMessage } = require('./lib/discord-bot');
-const { isInDays, isFriday } = require('./lib/utils');
-const { isMonday } = require('date-fns');
+const { isInDays } = require('./lib/utils');
+const { isMonday, isSaturday } = require('date-fns');
 
 (async () => {
     const games = await crawlLatestGames();
@@ -23,8 +23,8 @@ const { isMonday } = require('date-fns');
             return false;
         }
 
-        return isFriday(today) &&
-            (isInDays(game.date, 8) || isInDays(game.date, 10));
+        return isSaturday(today) &&
+            (isInDays(game.date, 7) || isInDays(game.date, 9));
     });
 
     if (gamesNextWeek.length > 0) {
