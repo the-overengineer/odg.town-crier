@@ -3,8 +3,8 @@ name: Notify about applications for ODG opening
 # Run it every hour
 on:
   schedule:
-    # Every Friday at noon
-    - cron: "0 12 * * FRI"
+    # Every Saturday at noon
+    - cron: "0 12 * * SAT"
   workflow_dispatch:
 
 jobs:
