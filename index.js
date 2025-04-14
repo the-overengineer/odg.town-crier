@@ -5,14 +5,14 @@ require('dotenv').config({
 });
 
 const { getGameLists } = require('./lib/game-crawler');
-const { sendGamesTomorrowMessage } = require('./lib/discord-bot');
+const { sendGamesTodayMessage } = require('./lib/discord-bot');
 
 (async () => {
     const games = await getGameLists();
     const gamesToday = games.games_today;
 
     if (gamesToday.length > 0) {
-        await sendGamesTomorrowMessage(gamesHappeningTomorrow);
+        await sendGamesTodayMessage(gamesHappeningTomorrow);
     } else {
         console.log('No games today');
     }
