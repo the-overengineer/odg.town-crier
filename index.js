@@ -20,7 +20,7 @@ const { sendGamesTodayMessage, sendEmptyGamesMessage } = require('./lib/discord-
     });
 
     if (gamesToday.length > 0) {
-        await sendGamesTodayMessage(gamesHappeningTomorrow);
+        await sendGamesTodayMessage(gamesToday);
     } else {
         console.log('No games today');
     }
