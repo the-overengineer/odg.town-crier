@@ -1,3 +1,4 @@
+// @ts-check
 const { join } = require('path');
 
 require('dotenv').config({
