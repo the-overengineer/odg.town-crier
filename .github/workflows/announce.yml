@@ -36,3 +36,4 @@ jobs:
           DISCORD_SERVER_ID: ${{ secrets.DISCORD_SERVER_ID }}
           ODG_USERNAME: ${{ secrets.ODG_USERNAME }}
           ODG_PASSWORD: ${{ secrets.ODG_PASSWORD }}
+          API_SECRET: ${{ secrets.API_SECRET }}
