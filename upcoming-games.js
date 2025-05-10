@@ -13,7 +13,7 @@ const { sendApplicationsOpenTonightMessage } = require('./lib/discord-bot');
 
     if (gamesOpening.length > 0) {
         const odgName = gamesOpening[0].odg;
-        const applicableGames = games.filter((game) => game.odg === odgName);
+        const applicableGames = gamesOpening.filter((game) => game.odg === odgName);
 
         await sendApplicationsOpenTonightMessage(applicableGames);
     }
