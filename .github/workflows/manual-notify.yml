@@ -1,4 +1,4 @@
-name: Run a manual notification hob
+name: Send prepared notification
 
 # Run it every hour
 on:
