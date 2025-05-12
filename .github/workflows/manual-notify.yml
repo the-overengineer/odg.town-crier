@@ -1,0 +1,41 @@
+name: Run a manual notification hob
+
+# Run it every hour
+on:
+  workflow_dispatch:
+    inputs:
+      message-name:
+        type: string
+        required: true
+        description: The name of the message file to process
+
+jobs:
+  notify-discord-odg:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Cache modules
+        uses: actions/cache@v3
+        id: npm-cache
+        with:
+          path: |
+            node_modules
+            .cache
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-npm-
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+      - name: Install dependencies
+        run: npm install
+      - name: Run the job
+        run: npm run manual-notification -- ${{ inputs.message-name }}
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+          DISCORD_NOTIFS_CHANNEL_NAME: ${{ secrets.DISCORD_NOTIFS_CHANNEL_NAME }}
+          DISCORD_SERVER_ID: ${{ secrets.DISCORD_SERVER_ID }}
+          ODG_USERNAME: ${{ secrets.ODG_USERNAME }}
+          ODG_PASSWORD: ${{ secrets.ODG_PASSWORD }}
+          API_SECRET: ${{ secrets.API_SECRET }}

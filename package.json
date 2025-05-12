@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "check": "node ./index.js",
-    "announce": "node ./upcoming-games.js"
+    "announce": "node ./upcoming-games.js",
+    "manual-notification": "node ./manual-notification.js"
   },
   "keywords": [],
   "author": "Luka Skukan <lskukan1@gmail.com>",
